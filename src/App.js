@@ -69,7 +69,6 @@ export default function App() {
   }
 
   const onSubmit = event => {
-    debugger
     event.preventDefault()
     const newFriend = {
       id: uuid(),
