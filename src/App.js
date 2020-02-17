@@ -1,82 +1,31 @@
-import React, { useReducer } from 'react'
-import uuid from 'uuid'
+import React from 'react'
 import './App.css'
 
-const someId = uuid()
-const anotherId = uuid()
-
-// STEP-1 think about application state
-const initialState = {
-  formValues: {
-    fname: '',
-    lname: '',
-  },
-  friends: [
-    { id: someId, fname: 'Jane', lname: 'Doe', married: false },
-    { id: anotherId, fname: 'john', lname: 'Smith', married: false },
-  ],
-  favFriendId: someId,
-}
-
-// STEP-2 think of all action types that might be necessary
-const INPUT_CHANGE = 'INPUT_CHANGE'
-const ADD_FRIEND = 'ADD_FRIEND'
-const MARK_FRIEND_MARRIED = 'MARK_FRIEND_MARRIED'
-
-// STEP-3 build a reducer
-function reducer(state, action) {
-  switch (action.type) {
-    case MARK_FRIEND_MARRIED:
-      return {
-        ...state,
-        friends: state.friends.map(fr => {
-          const friendId = action.payload
-          if (fr.id === friendId) {
-            return { ...fr, married: true }
-          }
-          return fr
-        })
-      }
-    case ADD_FRIEND: {
-      const newFriend = action.payload
-      return {
-        ...state,
-        formValues: { fname: '', lname: '' },
-        friends: [...state.friends, newFriend]
-      }
-    }
-    case INPUT_CHANGE:
-      const { inputName, inputValue } = action.payload
-      return {
-        ...state,
-        formValues: {
-          ...state.formValues,
-          [inputName]: inputValue,
-        }
-      }
-    default:
-      return state
-  }
-}
-
-export default function App() {
-  const [state, dispatch] = useReducer(reducer, initialState)
-
+export default function App({
+  // PROPS COME IN TWO FLAVORS
+  // A- data from state
+  formValues = { fname: '', lname: '' },
+  friends = [],
+  // B- callbacks to change state (action creators)
+  changeInput = Function.prototype,
+  addFriend = Function.prototype,
+  markFriendMarried = Function.prototype,
+}) {
+  // event handlers (we still need 'em)
   const onChange = event => {
     const inputName = event.target.name
     const inputValue = event.target.value
-    dispatch({ type: INPUT_CHANGE, payload: { inputName, inputValue } })
+    changeInput({ inputName, inputValue })
   }
-
   const onSubmit = event => {
     event.preventDefault()
-    const newFriend = {
-      id: uuid(),
-      fname: state.formValues.fname,
-      'lname': state.formValues.lname,
-    }
-    dispatch({ type: ADD_FRIEND, payload: newFriend })
+    const { fname, lname } = formValues
+    addFriend({ fname, lname })
   }
+  const onMarkFriendMarried = id => event => {
+    markFriendMarried(id)
+  }
+
   return (
     <div className="App">
       {/* here we can add a new friend */}
@@ -84,7 +33,7 @@ export default function App() {
       <form className='form' onSubmit={onSubmit}>
         <label>first name
         <input
-            value={state.formValues.fname}
+            value={formValues.fname}
             onChange={onChange}
             name='fname'
           />
@@ -92,7 +41,7 @@ export default function App() {
 
         <label>last name
         <input
-            value={state.formValues.lname}
+            value={formValues.lname}
             onChange={onChange}
             name='lname'
           />
@@ -104,25 +53,15 @@ export default function App() {
       {/* list of current friends */}
       <h4>My friends:</h4>
       {
-        state.friends.map(fr => (
+        friends.map(fr => (
           <div
             key={fr.id}
           >
             {fr.fname} {fr.lname} is{fr.married ? ' happily ' : ' NOT '}married
-            <button onClick={evt => {
-              dispatch({ type: MARK_FRIEND_MARRIED, payload: fr.id })
-            }}>Mark Married</button>
-            <button onClick={Function.prototype}>Fav</button>
+            <button onClick={onMarkFriendMarried(fr.id)}>Mark Married</button>
           </div>
         ))
       }
-
-      {/* my current favorite friend */}
-      <h4 className='fav'>My favorite friend is {
-        state.friends
-          .find(fr => fr.id === state.favFriendId)
-          .fname
-      }</h4>
     </div>
   )
 }
