@@ -1,7 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import * as actionsCreators from './state/actionCreators'
 import './App.css'
 
-export default function App({
+export function App({
   // PROPS COME IN TWO FLAVORS
   // A- data from state
   formValues = { fname: '', lname: '' },
@@ -65,3 +67,15 @@ export default function App({
     </div>
   )
 }
+
+function mapStateToProps(state) {
+  return {
+    formValues: state.formValues,
+    friends: state.friends,
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  actionsCreators
+)(App)
