@@ -7,12 +7,12 @@ import './App.css'
 function App({
   // PROPS COME IN SEVERAL FLAVORS:
   // A- data from redux state
-  formValues = { fname: '', lname: '' },
-  friends = [],
+  formValues,
+  friends,
   // B- callbacks to change state (action creators)
-  changeInput = Function.prototype,
-  addFriend = Function.prototype,
-  markFriendMarried = Function.prototype,
+  changeInput,
+  addFriend,
+  markFriendMarried,
   // C- props actually injected by the parent component
 }) {
   // Event listeners (we still need 'em)
