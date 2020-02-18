@@ -17,9 +17,6 @@ export function formReducer(state = initialStateForm, action) {
   debugger
   // console.log(state)   // { fname: 'Blake', lname: 'S' }
   // console.log(action)  // { type: "INPUT_CHANGE", payload: { inputName: "lname", inputValue: "Sm" } }
-
-  // switch
-
   switch (action.type) {
     case types.INPUT_CHANGE:
       // return new "slice"
@@ -27,15 +24,20 @@ export function formReducer(state = initialStateForm, action) {
         ...state,
         [action.payload.inputName]: action.payload.inputValue
       }
+    case types.ADD_FRIEND:
+      return initialStateForm
     default:
-      return state;
+      return state
   }
 }
 
 const initialStateFriends = []
 export function friendsReducer(state = initialStateFriends, action) {
-
-  // switch
-
-  return state
+  debugger
+  switch (action.type) {
+    case types.ADD_FRIEND:
+      return state.concat(action.payload)
+    default:
+      return state
+  }
 }
