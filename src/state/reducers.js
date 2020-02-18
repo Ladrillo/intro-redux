@@ -1,34 +1,23 @@
 import * as types from './actionTypes'
 
-// reducers
-const initialStateForm = { fname: '', lname: '' }
-export function formReducer(formValues = initialStateForm, action) {
-  switch (action.type) {
-    case types.INPUT_CHANGE:
-      return {
-        ...formValues,
-        [action.payload.inputName]: action.payload.inputValue
-      }
-    case types.ADD_FRIEND:
-      return initialStateForm
-    default:
-      return formValues
-  }
+// {
+//   formValues: { // SLICE 1
+//     fname: '',
+//     lname: '',
+//   },
+//   friends: [    // SLICE 2
+//     { id: someId, fname: 'Jane', lname: 'Doe', married: false },
+//     { id: anotherId, fname: 'john', lname: 'Smith', married: false },
+//   ],
+// }
+
+// STEP-3 CREATE ONE REDUCER FUNCTION PER SLICE OF STATE
+const initialStateForm = null
+export function formReducer() {
+
 }
 
-const initialStateFriends = []
-export function friendsReducer(friends = initialStateFriends, action) {
-  switch (action.type) {
-    case types.ADD_FRIEND:
-      return [...friends, action.payload]
-    case types.MARK_FRIEND_MARRIED:
-      return friends.map(fr => {
-        if (action.payload === fr.id) {
-          return { ...fr, married: true }
-        }
-        return fr
-      })
-    default:
-      return friends
-  }
+const initialStateFriends = null
+export function friendsReducer() {
+
 }

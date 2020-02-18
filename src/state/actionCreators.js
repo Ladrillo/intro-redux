@@ -1,31 +1,15 @@
 import * as types from './actionTypes'
 import uuid from 'uuid'
 
-// action creators
-export function changeInput({ inputName, inputValue }) {
-  return {
-    type: types.INPUT_CHANGE,
-    payload: { inputName, inputValue }
-  }
+// STEP-7 MAKE ACTION CREATORS THE COMPONENTS CAN USE DIRECTLY
+export function changeInput() {
+
 }
 
-export function addFriend({ fname, lname }) {
-  const newFriend = {
-    id: uuid(),
-    fname,
-    lname,
-    married: false,
-  }
+export function addFriend() {
 
-  return {
-    type: types.ADD_FRIEND,
-    payload: newFriend,
-  }
 }
 
-export function markFriendMarried(id) {
-  return {
-    type: types.MARK_FRIEND_MARRIED,
-    payload: id,
-  }
+export function markFriendMarried() {
+
 }

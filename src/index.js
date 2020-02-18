@@ -1,27 +1,25 @@
 import React from 'react'
-import * as redux from 'redux'
-import * as reactRedux from 'react-redux'
-import { formReducer, friendsReducer } from './state/reducers'
 import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
 
-// STEP-4
-const combinedReducer = redux.combineReducers({
-  formValues: formReducer,
-  friends: friendsReducer,
-})
+// STEP-1 DESIGN APPLICATION STATE
+// {
+//   formValues: { // SLICE 1
+//     fname: '',
+//     lname: '',
+//   },
+//   friends: [    // SLICE 2
+//     { id: someId, fname: 'Jane', lname: 'Doe', married: false },
+//     { id: anotherId, fname: 'john', lname: 'Smith', married: false },
+//   ],
+// }
 
-// STEP-5
-const store = redux.createStore(
-  combinedReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-)
+// STEP-4 USE combineReducers FROM redux TO MAKE A SINGLE REDUCER
+
+// STEP-5 USE createStore FROM redux TO MAKE A STATE STORE
 
 ReactDOM.render(
-  // STEP-6
-  <reactRedux.Provider store={store}>
-    <App />
-  </reactRedux.Provider>
-
+  // STEP-6 WRAP THE APPLICATION WITH A PROVIDER FROM react-redux
+  <App />
   , document.getElementById('root'))

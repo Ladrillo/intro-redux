@@ -1,6 +1,5 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import * as actionsCreators from './state/actionCreators'
+// STEP-9 BRING IN THE ACTION CREATORS
 import './App.css'
 
 export function App({
@@ -15,17 +14,15 @@ export function App({
 }) {
   // event handlers (we still need 'em)
   const onChange = event => {
-    const inputName = event.target.name
-    const inputValue = event.target.value
-    changeInput({ inputName, inputValue })
+    // get the interesting stuff from the event
+    // call an action creator that comes through props
   }
   const onSubmit = event => {
-    event.preventDefault()
-    const { fname, lname } = formValues
-    addFriend({ fname, lname })
+    // use the event to prevent an undesirable reload
+    // call an action creator that comes through props
   }
   const onMarkFriendMarried = id => event => {
-    markFriendMarried(id)
+    // call an action creator
   }
 
   return (
@@ -68,14 +65,5 @@ export function App({
   )
 }
 
-function mapStateToProps(state) {
-  return {
-    formValues: state.formValues,
-    friends: state.friends,
-  }
-}
-
-export default connect(
-  mapStateToProps,
-  actionsCreators
-)(App)
+// STEP-8 USE connect FROM react-redux TO WRAP OUR COMPONENT
+export default App
