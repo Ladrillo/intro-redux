@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { combineReducers, createStore } from 'redux'
+import { Provider } from 'react-redux'
 import { formReducer, friendsReducer } from './state/reducers'
 import './index.css'
 import App from './App'
@@ -37,5 +38,7 @@ const store = createStore(
 
 ReactDOM.render(
   // STEP-6 WRAP THE APPLICATION WITH A PROVIDER FROM react-redux
-  <App />
+  <Provider store={store}>
+    <App />
+  </Provider>
   , document.getElementById('root'))
