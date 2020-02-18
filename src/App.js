@@ -36,7 +36,7 @@ function App({
             value={formValues.fname}
             onChange={onChange}
             name='fname'
-          />
+        />
         </label><br />
 
         <label>last name
@@ -44,7 +44,7 @@ function App({
             value={formValues.lname}
             onChange={onChange}
             name='lname'
-          />
+        />
         </label><br />
 
         <input type='submit' />
