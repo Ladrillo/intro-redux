@@ -19,6 +19,10 @@ function App({
   const onChange = event => {
     // get the interesting stuff from the event
     // call an action creator that comes through props
+    changeInput({
+      inputName: event.target.name,
+      inputValue: event.target.value,
+    })
   }
   const onSubmit = event => {
     // use the event to prevent an undesirable reload
