@@ -36,6 +36,7 @@ function App({
   }
   const onMarkFriendMarried = id => event => {
     // call an action creator
+    markFriendMarried(id)
   }
 
   return (
