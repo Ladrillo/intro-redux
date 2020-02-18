@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { combineReducers } from 'redux'
+import { combineReducers, createStore } from 'redux'
 import { formReducer, friendsReducer } from './state/reducers'
 import './index.css'
 import App from './App'
@@ -28,6 +28,12 @@ const combinedReducer = combineReducers({
 })
 
 // STEP-5 USE createStore FROM redux TO MAKE A STATE STORE
+const store = createStore(
+  // arg 1: the monster reducer
+  combinedReducer,
+  // null unless redux devtools is installed
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
 
 ReactDOM.render(
   // STEP-6 WRAP THE APPLICATION WITH A PROVIDER FROM react-redux
