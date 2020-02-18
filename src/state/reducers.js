@@ -12,12 +12,20 @@ import * as types from './actionTypes'
 // }
 
 // STEP-3 CREATE ONE REDUCER FUNCTION PER SLICE OF STATE
-const initialStateForm = null
-export function formReducer() {
+const initialStateForm = { fname: '', lname: '' }
+export function formReducer(state, action) {
+  console.log(state);   // { fname: 'Blake', lname: 'S' }
+  console.log(action);  // { type: "INPUT_CHANGE", payload: { inputName: "lname", inputValue: "Sm" } }
 
+  // switch
+
+  return state
 }
 
-const initialStateFriends = null
-export function friendsReducer() {
+const initialStateFriends = []
+export function friendsReducer(state, action) {
 
+  // switch
+
+  return state
 }
