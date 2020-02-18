@@ -20,7 +20,16 @@ export function formReducer(state = initialStateForm, action) {
 
   // switch
 
-  return state
+  switch (action.type) {
+    case types.INPUT_CHANGE:
+      // return new "slice"
+      return {
+        ...state,
+        [action.payload.inputName]: action.payload.inputValue
+      }
+    default:
+      return state;
+  }
 }
 
 const initialStateFriends = []
