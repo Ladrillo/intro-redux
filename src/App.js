@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 // STEP-9 BRING IN THE ACTION CREATORS
 import './App.css'
 
@@ -67,4 +68,7 @@ function App({
 }
 
 // STEP-8 USE connect FROM react-redux TO WRAP OUR COMPONENT
-export default App
+export default connect(
+  // function,
+  // object with action creators,
+)(App)
