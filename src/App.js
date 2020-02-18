@@ -68,7 +68,17 @@ function App({
 }
 
 // STEP-8 USE connect FROM react-redux TO WRAP OUR COMPONENT
+function mapStateToProps(state) {
+  return {
+    // explaining what props the component is interested in
+    // left hand side of the colon is the prop received by the component
+    // right hand side of the colon is what part of the redux state
+    formValues: state.formValues,
+    friends: state.friends,
+    numberOfFriends: state.friends.length,
+  }
+}
 export default connect(
-  // function,
+  mapStateToProps,
   // object with action creators,
 )(App)
