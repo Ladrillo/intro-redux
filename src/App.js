@@ -2,7 +2,7 @@ import React from 'react'
 // STEP-9 BRING IN THE ACTION CREATORS
 import './App.css'
 
-export function App({
+function App({
   // PROPS COME IN TWO FLAVORS
   // A- data from state
   formValues = { fname: '', lname: '' },
