@@ -14,6 +14,7 @@ export function changeInput({ inputName, inputValue }) {
 }
 
 export function addFriend({ fname, lname }) {
+  debugger
   return {
     type: types.ADD_FRIEND,
     payload: { // this is the new friend for the reducer
