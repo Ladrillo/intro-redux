@@ -39,7 +39,7 @@ export function friendsReducer(state = initialStateFriends, action) {
     case types.MARK_MARRIED:
       return state.map(friend => {
         debugger
-        if (friend.id === action.payload.id) {
+        if (friend.id === action.payload) {
           return {
             ...friend,
             married: !friend.married
