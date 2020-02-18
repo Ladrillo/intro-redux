@@ -12,10 +12,21 @@ export function changeInput({ inputName, inputValue }) {
   }
 }
 
-export function addFriend() {
-
+export function addFriend({ fname, lname }) {
+  return {
+    type: types.ADD_FRIEND,
+    payload: { // this is the new friend for the reducer
+      id: uuid(),
+      fname,
+      lname,
+      married: false,
+    }
+  }
 }
 
-export function markFriendMarried() {
-
+export function markFriendMarried(id) {
+  return {
+    type: types.MARK_MARRIED,
+    payload: id,
+  }
 }
