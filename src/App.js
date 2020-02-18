@@ -3,16 +3,17 @@ import React from 'react'
 import './App.css'
 
 function App({
-  // PROPS COME IN TWO FLAVORS
-  // A- data from state
+  // PROPS COME IN SEVERAL FLAVORS:
+  // A- data from redux state
   formValues = { fname: '', lname: '' },
   friends = [],
   // B- callbacks to change state (action creators)
   changeInput = Function.prototype,
   addFriend = Function.prototype,
   markFriendMarried = Function.prototype,
+  // C- props actually injected by the parent component
 }) {
-  // event handlers (we still need 'em)
+  // Event listeners (we still need 'em)
   const onChange = event => {
     // get the interesting stuff from the event
     // call an action creator that comes through props
