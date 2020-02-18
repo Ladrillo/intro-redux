@@ -27,6 +27,12 @@ function App({
   const onSubmit = event => {
     // use the event to prevent an undesirable reload
     // call an action creator that comes through props
+    event.preventDefault()
+    // call an action creator that comes through props
+    addFriend({
+      fname: formValues.fname,
+      lname: formValues.lname,
+    });
   }
   const onMarkFriendMarried = id => event => {
     // call an action creator
@@ -42,7 +48,7 @@ function App({
             value={formValues.fname}
             onChange={onChange}
             name='fname'
-        />
+          />
         </label><br />
 
         <label>last name
@@ -50,7 +56,7 @@ function App({
             value={formValues.lname}
             onChange={onChange}
             name='lname'
-        />
+          />
         </label><br />
 
         <input type='submit' />
