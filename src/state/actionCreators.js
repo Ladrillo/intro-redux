@@ -3,7 +3,6 @@ import uuid from 'uuid'
 
 // STEP-7 MAKE ACTION CREATORS THE COMPONENTS CAN USE DIRECTLY
 export function changeInput({ inputName, inputValue }) {
-  debugger
   return { // this is an action. What should it have?
     type: types.INPUT_CHANGE,
     payload: {
@@ -14,7 +13,6 @@ export function changeInput({ inputName, inputValue }) {
 }
 
 export function addFriend({ fname, lname }) {
-  debugger
   return {
     type: types.ADD_FRIEND,
     payload: { // this is the new friend for the reducer

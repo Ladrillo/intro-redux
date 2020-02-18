@@ -14,7 +14,6 @@ import * as types from './actionTypes'
 // STEP-3 CREATE ONE REDUCER FUNCTION PER SLICE OF STATE
 const initialStateForm = { fname: '', lname: '' }
 export function formReducer(state = initialStateForm, action) {
-  debugger
   // console.log(state)   // { fname: 'Blake', lname: 'S' }
   // console.log(action)  // { type: "INPUT_CHANGE", payload: { inputName: "lname", inputValue: "Sm" } }
   switch (action.type) {
@@ -37,6 +36,17 @@ export function friendsReducer(state = initialStateFriends, action) {
   switch (action.type) {
     case types.ADD_FRIEND:
       return state.concat(action.payload)
+    case types.MARK_MARRIED:
+      return state.map(friend => {
+        debugger
+        if (friend.id === action.payload.id) {
+          return {
+            ...friend,
+            married: !friend.married
+          };
+        }
+        return friend;
+      })
     default:
       return state
   }
