@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { addFriend, changeInput, markFriendMarried } from './state/actionCreators'
 // STEP-9 BRING IN THE ACTION CREATORS
 import './App.css'
 
@@ -80,5 +81,6 @@ function mapStateToProps(state) {
 }
 export default connect(
   mapStateToProps,
-  // object with action creators,
+  // object with action creators imported at the top,
+  { addFriend, changeInput, markFriendMarried },
 )(App)
